@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!--
+
+    THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS
+    FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
+
+-->
+<rules xmlns="http://www.xebialabs.com/xl-deploy/xl-rules">
+    <rule name="smoketest.RunHttpRequest" scope="deployed">
+        <conditions>
+            <type>smoketest.ExecutedHttpRequestTest</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+            <operation>NOOP</operation>
+        </conditions>
+        <steps>
+            <os-script>
+                <script>smoketest/execute-http-request</script>
+                <order>102</order>
+                <description expression="true">"Run %s on %s" % (deployed.name, deployed.container.name)</description>
+                <classpath-resources>
+                    <value>smoketest/runtime/wget.exe</value>
+                </classpath-resources>
+            </os-script>
+        </steps>
+    </rule>
+    <rule name="smoketest.RunPostHttpRequest" scope="deployed">
+        <conditions>
+            <type>smoketest.ExecutedHttpPostRequestTest</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+            <operation>NOOP</operation>
+        </conditions>
+        <steps>
+            <os-script>
+                <script>smoketest/execute-http-request</script>
+                <order>102</order>
+                <description expression="true">"Run %s on %s (POST)" % (deployed.name, deployed.container.name)</description>
+                <classpath-resources>
+                    <value>smoketest/runtime/wget.exe</value>
+                    <value>smoketest/postdata.dat.ftl</value>
+                </classpath-resources>
+            </os-script>
+        </steps>
+    </rule>
+
+    <rule name="smoketest.RunPostHttpRequestFile" scope="deployed">
+        <conditions>
+            <type>smoketest.ExecutedHttpPostRequestFileTest</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+            <operation>NOOP</operation>
+        </conditions>
+        <steps>
+            <os-script>
+                <script>smoketest/execute-http-request</script>
+                <order>102</order>
+                <description expression="true">"Run %s on %s (POST) using file" % (deployed.name, deployed.container.name)</description>
+                <classpath-resources>
+                    <value>smoketest/runtime/wget.exe</value>
+                </classpath-resources>
+            </os-script>
+        </steps>
+    </rule>
+</rules>

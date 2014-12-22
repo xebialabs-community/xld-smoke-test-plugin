@@ -26,25 +26,14 @@ set MAX_RETRIES=${deployed.maxRetries}
 set RETRY_INTERVAL_SECS=${deployed.retryWaitInterval}
 set RESPONSE_FILE_PREFIX=http-response.%RANDOM%
 
-REM workaround for DEPLOYITPB-2907 - only needed if using a local (uploaded) executable
-dir /A:-D /B . | findstr /B /C:"${deployed.container.wgetExecutable}." > nul
-
-if not ERRORLEVEL 1 (
-  mkdir DEPLOYITPB-2907-workaround
-  for %%i in (${deployed.container.wgetExecutable}.*) do (
-    copy /B %%i DEPLOYITPB-2907-workaround
-  )
-  cd DEPLOYITPB-2907-workaround
-)
-
 <#assign wgetCmdLine = ["${deployed.container.wgetExecutable}", "--timeout=${deployed.timeout}"] />
 <#if (deployed.ignoreCertificateWarnings?? && deployed.ignoreCertificateWarnings)>
     <#assign wgetCmdLine = wgetCmdLine + ["--no-check-certificate"]/>
 </#if>
 <#if (deployed.postData??)>
-    <#assign wgetCmdLine = wgetCmdLine + ["--post-file=${step.remoteWorkingDirectory.path}/postdata.dat", "--header=\"Content-Type: ${deployed.contentType}\""]/>
+    <#assign wgetCmdLine = wgetCmdLine + ["--post-file=smoketest/postdata.dat", "--header=\"Content-Type: ${deployed.contentType}\""]/>
 <#elseif (deployed.file??)>
-    <#assign wgetCmdLine = wgetCmdLine + ["--post-file=${deployed.file}", "--header=\"Content-Type: ${deployed.contentType}\""]/>
+    <#assign wgetCmdLine = wgetCmdLine + ["--post-file=${deployed.file.name}", "--header=\"Content-Type: ${deployed.contentType}\""]/>
 </#if>
 
 <#list deployed.headers as header>

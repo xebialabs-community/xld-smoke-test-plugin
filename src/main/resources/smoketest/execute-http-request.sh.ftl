@@ -15,14 +15,14 @@ export ${envVar}
 </#list>
 </#if>
 
-<#assign wgetCmdLine = ["${deployed.container.wgetExecutable}", "--timeout=${deployed.timeout}"] />
+<#assign wgetCmdLine = ["wget", "--timeout=${deployed.timeout}"] />
 <#if (deployed.ignoreCertificateWarnings?? && deployed.ignoreCertificateWarnings)>
-    <#assign wgetCmdLine = wgetCmdLine + ["--no-check-certificate"]/>
+        <#assign wgetCmdLine = wgetCmdLine + ["--no-check-certificate"]/>
 </#if>
 <#if (deployed.postData??)>
-    <#assign wgetCmdLine = wgetCmdLine + ["--post-file=${step.remoteWorkingDirectory.path}/postdata.dat", "--header=\"Content-Type: ${deployed.contentType}\""]/>
+    <#assign wgetCmdLine = wgetCmdLine + ["--post-file=smoketest/postdata.dat", "--header=\"Content-Type: ${deployed.contentType}\""]/>
 <#elseif (deployed.file??)>
-    <#assign wgetCmdLine = wgetCmdLine + ["--post-file=${deployed.file}", "--header=\"Content-Type: ${deployed.contentType}\""]/>
+    <#assign wgetCmdLine = wgetCmdLine + ["--post-file=${deployed.file.name}", "--header=\"Content-Type: ${deployed.contentType}\""]/>
 </#if>
 <#list deployed.headers as header>
     <#assign wgetCmdLine = wgetCmdLine + ["--header=\"${header}\""]/>
