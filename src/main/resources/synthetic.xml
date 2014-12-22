@@ -9,12 +9,12 @@
 <synthetic xmlns="http://www.xebialabs.com/deployit/synthetic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd">
 
-    <type-modification type="overthere.Host">
+    <type-modification type="smoketest.Runner">
         <property name="wgetExecutable" hidden="true" default="wget" category="tests"/>
     </type-modification>
 
-    <type type="tests2.ExecutedHttpRequestTest2" extends="generic.ExecutedScript"
-          container-type="overthere.Host" deployable-type="tests2.HttpRequestTest">
+    <type type="smoketest.ExecutedHttpRequestTest" extends="generic.ExecutedScript"
+          container-type="smoketest.Runner" deployable-type="smoketest.HttpRequestTest">
 
         <property name="url" description="The URL to test"/>
         <property name="expectedResponseText" size="large"
@@ -39,8 +39,8 @@
         <property name="noopOrder" kind="integer" hidden="true" default="102"/>
     </type>
 
-    <type type="tests2.ExecutedHttpPostRequestTest" extends="tests2.ExecutedHttpRequestTest"
-          deployable-type="tests2.HttpPostRequestTest">
+    <type type="smoketest.ExecutedHttpPostRequestTest" extends="smoketest.ExecutedHttpRequestTest"
+          deployable-type="smoketest.ExecutedHttpRequestTest">
         <generate-deployable type="tests2.HttpPostRequestTest" extends="tests2.HttpRequestTest"/>
         <property name="postData" size="large" description="Use POST as the method for all HTTP requests and send the specified data in the request body."/>
         <property name="contentType" default="text/xml" description="Content mime type"/>
