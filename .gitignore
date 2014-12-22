@@ -1,0 +1,7 @@
+build/
+.gradle/
+gradle/dependencies.conf
+*.iml
+*.ipr
+*.iws
+
