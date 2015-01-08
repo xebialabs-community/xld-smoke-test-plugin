@@ -13,12 +13,13 @@
             <operation>CREATE</operation>
             <operation>MODIFY</operation>
             <operation>NOOP</operation>
+            <expression>not deployed.container.powershellInstalled</expression>
         </conditions>
         <steps>
             <os-script>
                 <script>smoketest/execute-http-request</script>
                 <order>102</order>
-                <description expression="true">"Run %s on %s" % (deployed.name, deployed.container.name)</description>
+                <description expression="true">"Run '%s' on %s" % (deployed.name, deployed.container.name)</description>
                 <classpath-resources>
                     <value>smoketest/runtime/wget.exe</value>
                 </classpath-resources>
@@ -31,12 +32,13 @@
             <operation>CREATE</operation>
             <operation>MODIFY</operation>
             <operation>NOOP</operation>
+            <expression>not deployed.container.powershellInstalled</expression>
         </conditions>
         <steps>
             <os-script>
                 <script>smoketest/execute-http-request</script>
                 <order>102</order>
-                <description expression="true">"Run %s on %s (POST)" % (deployed.name, deployed.container.name)</description>
+                <description expression="true">"Run '%s' on %s" % (deployed.name, deployed.container.name)</description>
                 <classpath-resources>
                     <value>smoketest/runtime/wget.exe</value>
                     <value>smoketest/postdata.dat.ftl</value>
@@ -51,16 +53,60 @@
             <operation>CREATE</operation>
             <operation>MODIFY</operation>
             <operation>NOOP</operation>
+            <expression>not deployed.container.powershellInstalled</expression>
         </conditions>
         <steps>
             <os-script>
                 <script>smoketest/execute-http-request</script>
                 <order>102</order>
-                <description expression="true">"Run %s on %s (POST) using file" % (deployed.name, deployed.container.name)</description>
+                <description expression="true">"Run '%s' on %s" % (deployed.name, deployed.container.name)</description>
                 <classpath-resources>
                     <value>smoketest/runtime/wget.exe</value>
                 </classpath-resources>
             </os-script>
+        </steps>
+    </rule>
+
+    <rule name="smoketest.RunHttpRequest.powershell" scope="deployed">
+        <conditions>
+            <type>smoketest.ExecutedHttpRequestTest</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+            <operation>NOOP</operation>
+            <expression>deployed.container.powershellInstalled and deployed.container.host.os == "WINDOWS"</expression>
+        </conditions>
+        <steps>
+            <powershell>
+                <script>smoketest/execute-http-request.ps1</script>
+                <order>102</order>
+                <description expression="true">"Run %s on %s (PowerShell)" % (deployed.name, deployed.container.name)</description>
+                <target-host expression="true">deployed.container.host</target-host>
+                <powershell-context>
+                    <method>GET</method>
+                </powershell-context>
+            </powershell>
+        </steps>
+    </rule>
+
+    <rule name="smoketest.RunPostHttpRequest.powershell" scope="deployed">
+        <conditions>
+            <type>smoketest.ExecutedHttpPostRequestTest</type>
+            <type>smoketest.ExecutedHttpPostRequestFileTest</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+            <operation>NOOP</operation>
+            <expression>deployed.container.powershellInstalled and deployed.container.host.os == "WINDOWS"</expression>
+        </conditions>
+        <steps>
+            <powershell>
+                <script>smoketest/execute-http-request.ps1</script>
+                <order>102</order>
+                <description expression="true">"Run %s on %s (POST PowerShell)" % (deployed.name, deployed.container.name)</description>
+                <target-host expression="true">deployed.container.host</target-host>
+                <powershell-context>
+                    <method>POST</method>
+                </powershell-context>
+            </powershell>
         </steps>
     </rule>
 </rules>

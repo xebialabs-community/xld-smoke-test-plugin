@@ -36,9 +36,9 @@ set RESPONSE_FILE_PREFIX=http-response.%RANDOM%
     <#assign wgetCmdLine = wgetCmdLine + ["--post-file=${deployed.file.name}", "--header=\"Content-Type: ${deployed.contentType}\""]/>
 </#if>
 
-<#list deployed.headers as header>
-    <#assign wgetCmdLine = wgetCmdLine + ["--header=\"${header}\""]/>
-</#list>
+        <#list deployed.headers as header>
+            <#assign wgetCmdLine = wgetCmdLine + ["--header=\"${header}\""]/>
+        </#list>
 
 <#assign wgetCmdLine = wgetCmdLine + ["-O"]/>
 

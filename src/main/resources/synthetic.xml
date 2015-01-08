@@ -11,6 +11,8 @@
 
     <type type="smoketest.Runner" extends="udm.BaseContainer">
         <property name="host" kind="ci" referenced-type="overthere.Host" as-containment="true"/>
+        <property name="powershellInstalled" kind="boolean" default="false" required="false" hidden="false"
+                  description="Enable to indicate Powershell (V3+) installed on the host associated to the Runner"/>
         <property name="wgetExecutable" hidden="true" default="smoketest\runtime\wget.exe" category="tests"/>
     </type>
 

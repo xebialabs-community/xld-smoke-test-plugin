@@ -2,7 +2,7 @@
 
 # Overview #
 
-The Smoke Test plugin is an XL Deploy plugin that triggers http requests at the end of the deployment tasks. It uses `wget` executable file.
+The Smoke Test plugin is an XL Deploy plugin that triggers http requests at the end of the deployment task. It uses either `wget` executable file (Unix / Windows) or `Invoke-WebRequest` PowerShell cmdlet (Windows).
 
 # Requirements #
 
@@ -26,7 +26,16 @@ A `smoketest.Runner` CI is a container from which the test will be performed.
 
 # Note #
 
-On Windows hosts, the plugin will by default use a version of `wget` included in the plugin. If you wish to use a _different_ `wget` that is _already present_ on the path of your target systems you can simply prevent the included version from being uploaded by modifying `SERVER_HOME/conf/deployit-defaults.properties` as follows:
+On Unix hosts, the plugin will use `wget`that should be already installed.
+On Windows hosts, there are 2 options
+
+* use a version of `wget` bundled in the plugin and uploaded to perform the http request. (default option)
+* use a PowerShell implementation. To activate this option you need to
+** enable the property powershellInstalled` on the `smoketest.Runner`
+** install PowerShell v3+ on the remote Windows Host.
+
+
+If you wish to use a _different_ `wget` that is _already present_ on the path of your target systems you can simply prevent the included version from being uploaded by modifying `SERVER_HOME/conf/deployit-defaults.properties` as follows:
 
 	# Classpath Resources
 	# smokeTest.ExecutedHttpRequestTest.classpathResources=smoketest/runtime/wget.exe
@@ -36,3 +45,5 @@ to
 	# Classpath Resources
 	smokeTest.ExecutedHttpRequestTest.classpathResources=
 
+
+![XLD Smoke Test plugin in action](img/xld-smoke-test-inaction.png)
