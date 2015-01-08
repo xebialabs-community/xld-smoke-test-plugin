@@ -1,1 +1,13 @@
 language: java
+deploy:
+  provider: releases
+  api_key:
+    secure: XEbEI9IF1YjhRL4bPZ0GwweLX5+9O7oRik1to1fuuEuZo/asNEXj2Wjis54H7MkgV8oYxgtzPKcWU8QqElyq+QsaCUcrCMOZ3MLCURE4k30pNLxxFLA3R9Pt1z1YLzA2q9lL5ccAcYbuBskRMLD8CJD7jLa4f7AS9hQFWgLKG1w=
+  file: build/libs/xld-smoke-test-plugin-1.0.jar
+  on:
+    all_branches: true
+    tags: true
+notifications:
+  hipchat:
+    rooms:
+      secure: T0EFV0NmJT/7Nc9PlA7zUY7ppI48wJ2M3jyTdPTfs4F0IDrfgQr6p2+iIFz+Dkyv6IXc13GN92z6xPPU6zp5yRAgNb1cP1UjfgDNP6KYMF04WLVZqvTQxBmC6QSUo4WFpN3H1Zx1oxGHEAq0V/jpMBELw+tWpAyMCfKWNJCshdQ=
