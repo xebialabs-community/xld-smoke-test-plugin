@@ -18,7 +18,7 @@
         <steps>
             <os-script>
                 <script>smoketest/execute-http-request</script>
-                <order>102</order>
+                <order expression="true">deployed.order</order>
                 <description expression="true">"Run '%s' on %s" % (deployed.name, deployed.container.name)</description>
                 <classpath-resources>
                     <value>smoketest/runtime/wget.exe</value>
@@ -37,7 +37,7 @@
         <steps>
             <os-script>
                 <script>smoketest/execute-http-request</script>
-                <order>102</order>
+                <order expression="true">deployed.order</order>
                 <description expression="true">"Run '%s' on %s" % (deployed.name, deployed.container.name)</description>
                 <classpath-resources>
                     <value>smoketest/runtime/wget.exe</value>
@@ -58,7 +58,7 @@
         <steps>
             <os-script>
                 <script>smoketest/execute-http-request</script>
-                <order>102</order>
+                <order expression="true">deployed.order</order>
                 <description expression="true">"Run '%s' on %s" % (deployed.name, deployed.container.name)</description>
                 <classpath-resources>
                     <value>smoketest/runtime/wget.exe</value>
@@ -78,7 +78,7 @@
         <steps>
             <powershell>
                 <script>smoketest/execute-http-request.ps1</script>
-                <order>102</order>
+                <order expression="true">deployed.order</order>
                 <description expression="true">"Run %s on %s (PowerShell)" % (deployed.name, deployed.container.name)</description>
                 <target-host expression="true">deployed.container.host</target-host>
                 <powershell-context>
@@ -100,7 +100,7 @@
         <steps>
             <powershell>
                 <script>smoketest/execute-http-request.ps1</script>
-                <order>102</order>
+                <order expression="true">deployed.order</order>
                 <description expression="true">"Run %s on %s (POST PowerShell)" % (deployed.name, deployed.container.name)</description>
                 <target-host expression="true">deployed.container.host</target-host>
                 <powershell-context>
