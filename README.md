@@ -23,6 +23,10 @@ A `smoketest.Runner` CI is a container from which the test will be performed.
 * `smoketest.HttpPostRequestTest` for a HTTP request using the POST verb
 * `smoketest.HttpPostRequestFileTest` for a HTTP request using the POST verb and a file that contains the post data.
 
+# Expected and Unexpected text #
+
+You can specify what text you expect to be in the response, like version numbers. And/or you can specify the text that should not be in the response, like error statements.
+
 
 # Note #
 

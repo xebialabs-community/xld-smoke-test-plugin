@@ -63,11 +63,26 @@ fi
 cat $RESPONSE_FILE
 </#if>
 
+<#if deployed.expectedResponseText?has_content>
+echo Making sure response contains: "${deployed.expectedResponseText}"
 grep "${deployed.expectedResponseText}" $RESPONSE_FILE
 
 SEARCH_EXIT_CODE=$?
 
 if [ $SEARCH_EXIT_CODE -ne 0 ]; then
-echo ERROR: Response body did not contain "${deployed.expectedResponseText}"
+echo ERROR: Response body did not contain: "${deployed.expectedResponseText}"
 exit $SEARCH_EXIT_CODE
 fi
+</#if>
+
+<#if deployed.unexpectedResponseText?has_content>
+echo Making sure response does not contain: "${deployed.unexpectedResponseText}"
+grep "${deployed.unexpectedResponseText}" $RESPONSE_FILE
+
+SEARCH_EXIT_CODE=$?
+
+if [ $SEARCH_EXIT_CODE -eq 0 ]; then
+echo ERROR: Response body did contain: "${deployed.unexpectedResponseText}"
+exit 1
+fi
+</#if>

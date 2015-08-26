@@ -4,4 +4,4 @@ gradle/dependencies.conf
 *.iml
 *.ipr
 *.iws
-
+.idea

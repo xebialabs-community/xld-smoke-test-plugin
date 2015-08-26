@@ -69,13 +69,26 @@ if not [%WGET_EXIT_CODE%]==[0] (
 type %LAST_RESPONSE_FILE%
 </#if>
 
+<#if deployed.expectedResponseText?has_content>
 findstr /C:"${deployed.expectedResponseText}" %LAST_RESPONSE_FILE%
 
 set SEARCH_EXIT_CODE=%ERRORLEVEL%
 
 if not [%SEARCH_EXIT_CODE%]==[0] (
-  echo ERROR: Response body did not contain "${deployed.expectedResponseText}"
+  echo ERROR: Response body did not contain: "${deployed.expectedResponseText}"
   exit %SEARCH_EXIT_CODE%
 )
+</#if>
+
+<#if deployed.unexpectedResponseText?has_content>
+findstr /C:"${deployed.unexpectedResponseText}" %LAST_RESPONSE_FILE%
+
+set SEARCH_EXIT_CODE=%ERRORLEVEL%
+
+if [%SEARCH_EXIT_CODE%]==[0] (
+  echo ERROR: Response body did contain: "${deployed.unexpectedResponseText}"
+  exit 1
+)
+</#if>
 
 endlocal

@@ -47,12 +47,25 @@ if( $deployed.showPageInConsole ) {
 }
 
 Write-Host "Testing the content"
-$find = $request.AllElements | where {$_.innerhtml -like "*$($deployed.expectedResponseText)*"}
-if( $find.count -eq 0) {
-  Write-Host "ERROR: Response body did not contain '" $deployed.expectedResponseText "'"
-    Exit 1
-} else {
-  Write-Host "Response body contains '" $deployed.expectedResponseText "'"
+
+if($deployed.expectedResponseText){
+  $find = $request.AllElements | where {$_.innerhtml -like "*$($deployed.expectedResponseText)*"}
+  if( $find.count -eq 0) {
+    Write-Host "ERROR: Response body did not contain: '" $deployed.expectedResponseText "'"
+      Exit 1
+  } else {
+    Write-Host "Response body contains: '" $deployed.expectedResponseText "'"
+  }
+}
+
+if($deployed.unexpectedResponseText){
+  $find = $request.AllElements | where {$_.innerhtml -like "*$($deployed.unexpectedResponseText)*"}
+  if( $find.count -eq 0) {
+    Write-Host "Response body does not contain: '" $deployed.unexpectedResponseText "'"
+  } else {
+    Write-Host "ERROR: Response body did contain: '" $deployed.unexpectedResponseText "'"
+      Exit 1
+  }
 }
 
 
