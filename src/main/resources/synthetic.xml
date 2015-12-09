@@ -22,7 +22,7 @@
         <generate-deployable type="smoketest.HttpRequestTest" extends="udm.BaseDeployable"/>
 
         <property name="url" description="The URL to test"/>
-        <property name="expectedResponseText" size="large"
+        <property name="expectedResponseText" required="false" size="large"
                   description="Text that is expected to be contained in the HTTP response body, if the response code is in the 200 range. A non-2xx response code will cause the test to fail irrespective of the response body"/>
         <property name="unexpectedResponseText" required="false" size="large"
                   description="Text that should not be contained in the HTTP response body, if the response code is in the 200 range. A non-2xx response code will cause the test to fail irrespective of the response body"/>
