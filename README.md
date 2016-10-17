@@ -4,6 +4,22 @@
 
 The Smoke Test plugin is an XL Deploy plugin that triggers http requests at the end of the deployment task. It uses either `wget` executable file (Unix / Windows) or `Invoke-WebRequest` PowerShell cmdlet (Windows).
 
+
+# CI status #
+
+[![Build Status][xld-smoke-test-plugin-travis-image]][xld-smoke-test-plugin-travis-url]
+[![Codacy Badge][xld-smoke-test-plugin-codacy-image] ][xld-smoke-test-plugin-codacy-url]
+[![Code Climate][xld-smoke-test-plugin-code-climate-image] ][xld-smoke-test-plugin-code-climate-url]
+
+[xld-smoke-test-plugin-travis-image]: https://travis-ci.org/xebialabs-community/xld-smoke-test-plugin.svg?branch=master
+[xld-smoke-test-plugin-travis-url]: https://travis-ci.org/xebialabs-community/xld-smoke-test-plugin
+[xld-smoke-test-plugin-codacy-image]: https://api.codacy.com/project/badge/Grade/49e14532522f4d6f8326b1899efd8cd3
+[xld-smoke-test-plugin-codacy-url]: https://www.codacy.com/app/joris-dewinne/xld-smoke-test-plugin
+[xld-smoke-test-plugin-code-climate-image]: https://codeclimate.com/github/xebialabs-community/xld-smoke-test-plugin/badges/gpa.svg
+[xld-smoke-test-plugin-code-climate-url]: https://codeclimate.com/github/xebialabs-community/xld-smoke-test-plugin
+
+
+
 # Requirements #
 
 * **Deployit requirements**
