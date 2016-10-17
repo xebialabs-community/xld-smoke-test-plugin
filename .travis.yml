@@ -1,13 +1,14 @@
 language: java
-deploy:
-  provider: releases
-  api_key:
-    secure: XEbEI9IF1YjhRL4bPZ0GwweLX5+9O7oRik1to1fuuEuZo/asNEXj2Wjis54H7MkgV8oYxgtzPKcWU8QqElyq+QsaCUcrCMOZ3MLCURE4k30pNLxxFLA3R9Pt1z1YLzA2q9lL5ccAcYbuBskRMLD8CJD7jLa4f7AS9hQFWgLKG1w=
-  file: build/libs/xld-smoke-test-plugin-1.0.3.jar
-  on:
-    all_branches: true
-    tags: true
 notifications:
   hipchat:
     rooms:
       secure: TYbMuXiro85Mpp4MkGsHqkn/0vGHBcKj3FY2wSEuxLFIr38/OobCtK4ECpX2eFKdZxi+qeudryX5gYrXbbRSklSY3a5hPKt5FVDnIo3i54XhocmC+trkWR/mq0674o6o2YUsWkOTm6smM5B1TQngMD29XEui36TsNPpR18j0bxQ=
+deploy:
+  provider: releases
+  api_key:
+    secure: VjIWWI6m4xRdIPLwfuEdU/P3wx8YzbQP3ioBM0VjlXep99+GhGI4foAwYhYSVOY4lkNtlauw9kCFzlFFxOoa80MmGf2oMsAIvgdVPPtNLv+IlzGLx2/R1di7Vt5Q9JWOcvbZoKUeynFch9j1oEBO5HmrOHUL4gEzdcwSqItfVcw=
+  file: build/distributions/xld-smoke-test-plugin-1.0.3.xldp
+  on:
+    repo: xebialabs-community/xld-smoke-test-plugin
+    all_branches: true
+    tags: true
