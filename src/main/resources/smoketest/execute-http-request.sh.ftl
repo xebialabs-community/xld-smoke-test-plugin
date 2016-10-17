@@ -1,11 +1,11 @@
-<#--
+	<#--
 
     THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR
     IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS
     FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
 
 -->
-#!/bin/bash
+#!/bin/sh
 
 <#if deployed.container.envVars??>
 <#assign envVars=deployed.container.envVars />
@@ -40,7 +40,8 @@ fi
 MAX_RETRIES=${deployed.maxRetries}
 RETRY_INTERVAL_SECS=${deployed.retryWaitInterval}
 
-for (( i=1; i<=$MAX_RETRIES; i++ )); do
+for i in `seq 1 $MAX_RETRIES`
+do
 RESPONSE_FILE=http-response.$$
 rm -f $RESPONSE_FILE
 
