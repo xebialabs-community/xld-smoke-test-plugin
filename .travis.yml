@@ -7,7 +7,7 @@ deploy:
   provider: releases
   api_key:
     secure: VjIWWI6m4xRdIPLwfuEdU/P3wx8YzbQP3ioBM0VjlXep99+GhGI4foAwYhYSVOY4lkNtlauw9kCFzlFFxOoa80MmGf2oMsAIvgdVPPtNLv+IlzGLx2/R1di7Vt5Q9JWOcvbZoKUeynFch9j1oEBO5HmrOHUL4gEzdcwSqItfVcw=
-  file: build/distributions/xld-smoke-test-plugin-1.0.3.xldp
+  file: build/distributions/xld-smoke-test-plugin-1.0.4.xldp
   on:
     repo: xebialabs-community/xld-smoke-test-plugin
     all_branches: true
