@@ -6,7 +6,7 @@ notifications:
 deploy:
   provider: releases
   api_key:
-    secure: VjIWWI6m4xRdIPLwfuEdU/P3wx8YzbQP3ioBM0VjlXep99+GhGI4foAwYhYSVOY4lkNtlauw9kCFzlFFxOoa80MmGf2oMsAIvgdVPPtNLv+IlzGLx2/R1di7Vt5Q9JWOcvbZoKUeynFch9j1oEBO5HmrOHUL4gEzdcwSqItfVcw=
+    secure: VcwxOdFebF5FcOCBMiUB3HFUfoTdVOd6ExlMPIzQXv6XxOiCtlkwKbB9iuKJ7FnbMya4r3bCwuCzf9j4PZ3w/OEvV65e9aOKK0v6svVfHq2RxNV3x6BSe4mOEwT679GAZJ/pEKr34gQk0Gcc1n/G6e9hx+K3PuK9eOjZ55Ui+w0=
   file_glob: true
   file: build/distributions/*
   on:
