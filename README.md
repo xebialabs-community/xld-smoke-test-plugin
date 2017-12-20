@@ -23,12 +23,12 @@ The Smoke Test plugin is an XL Deploy plugin that triggers http requests at the 
 
 ## Requirements
 
-* **Deployit requirements**
-	* **Deployit**: version 4.5.+
+* **XL Deploy requirements**
+	* **XL Deploy**: version 6.0.+
 
 ## Installation
 
-Place the plugin JAR file into your `SERVER_HOME/plugins` directory.
+Place the plugin `xldp` file into your `SERVER_HOME/plugins` directory.
 
 ## Usage
 
