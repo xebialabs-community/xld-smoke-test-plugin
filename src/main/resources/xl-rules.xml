@@ -27,6 +27,7 @@
                 <classpath-resources>
                     <value>smoketest/runtime/wget.exe</value>
                 </classpath-resources>
+                <shell>/bin/sh</shell>
             </os-script>
         </steps>
     </rule>
@@ -47,6 +48,7 @@
                     <value>smoketest/runtime/wget.exe</value>
                     <value>smoketest/postdata.dat.ftl</value>
                 </classpath-resources>
+                <shell>/bin/sh</shell>
             </os-script>
         </steps>
     </rule>
@@ -67,6 +69,7 @@
                 <classpath-resources>
                     <value>smoketest/runtime/wget.exe</value>
                 </classpath-resources>
+                <shell>/bin/sh</shell>
             </os-script>
         </steps>
     </rule>
