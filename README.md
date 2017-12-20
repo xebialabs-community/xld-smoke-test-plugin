@@ -1,15 +1,11 @@
-# Smoke Test plugin #
-
-# Overview #
-
-The Smoke Test plugin is an XL Deploy plugin that triggers http requests at the end of the deployment task. It uses either `wget` executable file (Unix / Windows) or `Invoke-WebRequest` PowerShell cmdlet (Windows).
-
-
-# CI status #
+# Smoke Test plugin
 
 [![Build Status][xld-smoke-test-plugin-travis-image]][xld-smoke-test-plugin-travis-url]
 [![Codacy Badge][xld-smoke-test-plugin-codacy-image] ][xld-smoke-test-plugin-codacy-url]
 [![Code Climate][xld-smoke-test-plugin-code-climate-image] ][xld-smoke-test-plugin-code-climate-url]
+[![License: MIT][xld-smoke-test-plugin-license-image] ][xld-smoke-test-plugin-license-url]
+[![Github All Releases][xld-smoke-test-plugin-downloads-image] ]()
+
 
 [xld-smoke-test-plugin-travis-image]: https://travis-ci.org/xebialabs-community/xld-smoke-test-plugin.svg?branch=master
 [xld-smoke-test-plugin-travis-url]: https://travis-ci.org/xebialabs-community/xld-smoke-test-plugin
@@ -17,19 +13,24 @@ The Smoke Test plugin is an XL Deploy plugin that triggers http requests at the 
 [xld-smoke-test-plugin-codacy-url]: https://www.codacy.com/app/joris-dewinne/xld-smoke-test-plugin
 [xld-smoke-test-plugin-code-climate-image]: https://codeclimate.com/github/xebialabs-community/xld-smoke-test-plugin/badges/gpa.svg
 [xld-smoke-test-plugin-code-climate-url]: https://codeclimate.com/github/xebialabs-community/xld-smoke-test-plugin
+[xld-smoke-test-plugin-license-image]: https://img.shields.io/badge/License-MIT-yellow.svg
+[xld-smoke-test-plugin-license-url]: https://opensource.org/licenses/MIT
+[xld-smoke-test-plugin-downloads-image]: https://img.shields.io/github/downloads/xebialabs-community/xld-smoke-test-plugin/total.svg
 
+## Overview
 
+The Smoke Test plugin is an XL Deploy plugin that triggers http requests at the end of the deployment task. It uses either `wget` executable file (Unix / Windows) or `Invoke-WebRequest` PowerShell cmdlet (Windows).
 
-# Requirements #
+## Requirements
 
 * **Deployit requirements**
 	* **Deployit**: version 4.5.+
 
-# Installation #
+## Installation
 
 Place the plugin JAR file into your `SERVER_HOME/plugins` directory.
 
-# Usage #
+## Usage
 
 A `smoketest.Runner` CI is a container from which the test will be performed.
 
@@ -39,12 +40,12 @@ A `smoketest.Runner` CI is a container from which the test will be performed.
 * `smoketest.HttpPostRequestTest` for a HTTP request using the POST verb
 * `smoketest.HttpPostRequestFileTest` for a HTTP request using the POST verb and a file that contains the post data.
 
-# Expected and Unexpected text #
+## Expected and Unexpected text
 
 You can specify what text you expect to be in the response, like version numbers. And/or you can specify the text that should not be in the response, like error statements.
 
 
-# Note #
+## Note
 
 On Unix hosts, the plugin will use `wget`that should be already installed.
 On Windows hosts, there are 2 options
