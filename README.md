@@ -66,4 +66,4 @@ to
 	smokeTest.ExecutedHttpRequestTest.classpathResources=
 
 
-![XLD Smoke Test plugin in action](img/xld-smoke-test-inaction.png)
+![XLD Smoke Test plugin in action](images/xld-smoke-test-inaction.png)
