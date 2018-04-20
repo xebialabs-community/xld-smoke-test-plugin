@@ -30,34 +30,12 @@ if (!project.hasProperty('release.useLastTag')) {
   project.ext['release.useLastTag'] = true
 }
 
-
-dependencies {
-  compile "com.xebialabs.deployit:udm-plugin-api:2014.7"
-  compile "com.xebialabs.deployit:engine-api:2014.7"
-  compile "com.xebialabs.deployit:engine-spi:2014.7"
-  compile 'com.google.guava:guava:16.0'
-  compile 'com.google.code.findbugs:findbugs:3.0.0'
-  compile 'commons-io:commons-io:1.4'
-  compile 'org.jdom:jdom:2.0.2'
-  testCompile 'junit:junit:4.12'
-
-}
-
-repositories {
-  mavenLocal()
-  mavenCentral()
-  maven {
-    url 'https://dist.xebialabs.com/public/maven2'
-  }
-}
-
 processResources.configure {
   filter ReplaceTokens, tokens: [
     'project.version': version.toString(),
     'project.name'   : rootProject.name
   ]
 }
-
 
 license {
   header rootProject.file('License.md')
