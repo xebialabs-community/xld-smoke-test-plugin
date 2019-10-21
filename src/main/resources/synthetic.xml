@@ -18,6 +18,7 @@
         <property name="powershellInstalled" kind="boolean" default="false" required="false" hidden="false"
                   description="Enable to indicate Powershell (V3+) installed on the host associated to the Runner"/>
         <property name="wgetExecutable" hidden="true" default="smoketest\runtime\wget.exe" category="tests"/>
+        <property name="noProxy" kind="boolean" default="false" category="Options" description="Set the option --no-proxy when executing wget. Set by the container as it is the one knowing if it has to go trough the proxy or not."/>
     </type>
 
     <type type="smoketest.ExecutedHttpRequestTest" extends="udm.BaseDeployed"

@@ -28,6 +28,9 @@ export ${envVar}
 <#elseif (deployed.file??)>
     <#assign wgetCmdLine = wgetCmdLine + ["--post-file=${deployed.file.name}", "--header=\"Content-Type: ${deployed.contentType}\""]/>
 </#if>
+<#if (deployed.container.noProxy?? && deployed.container.noProxy)>
+    <#assign wgetCmdLine = wgetCmdLine + ["--no-proxy"]/>
+</#if>
 <#list deployed.headers as header>
     <#assign wgetCmdLine = wgetCmdLine + ["--header=\"${header}\""]/>
 </#list>
