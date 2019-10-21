@@ -30,7 +30,8 @@ export ${envVar}
 </#if>
 <#if (deployed.container.noProxy?? && deployed.container.noProxy)>
     <#assign wgetCmdLine = wgetCmdLine + ["--no-proxy"]/>
-</#if><#list deployed.headers as header>
+</#if>
+<#list deployed.headers as header>
     <#assign wgetCmdLine = wgetCmdLine + ["--header=\"${header}\""]/>
 </#list>
 
