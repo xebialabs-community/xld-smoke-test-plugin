@@ -1,119 +1,135 @@
 <?xml version="1.0"?>
 <!--
 
-    Copyright 2019 XEBIALABS
+Copyright 2019 XEBIALABS
 
-    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 -->
 <rules xmlns="http://www.xebialabs.com/xl-deploy/xl-rules">
-    <rule name="smoketest.RunHttpRequest" scope="deployed">
-        <conditions>
-            <type>smoketest.ExecutedHttpRequestTest</type>
-            <operation>CREATE</operation>
-            <operation>MODIFY</operation>
-            <operation>NOOP</operation>
-            <expression>not deployed.container.powershellInstalled</expression>
-        </conditions>
-        <steps>
-            <os-script>
-                <script>smoketest/execute-http-request</script>
-                <order expression="true">deployed.order</order>
-                <description expression="true">"Run '%s' on %s" % (deployed.name, deployed.container.name)</description>
-                <classpath-resources>
-                    <value>smoketest/runtime/wget.exe</value>
-                </classpath-resources>
-                <shell>/bin/sh</shell>
-            </os-script>
-        </steps>
-    </rule>
-    <rule name="smoketest.RunPostHttpRequest" scope="deployed">
-        <conditions>
-            <type>smoketest.ExecutedHttpPostRequestTest</type>
-            <operation>CREATE</operation>
-            <operation>MODIFY</operation>
-            <operation>NOOP</operation>
-            <expression>not deployed.container.powershellInstalled</expression>
-        </conditions>
-        <steps>
-            <os-script>
-                <script>smoketest/execute-http-request</script>
-                <order expression="true">deployed.order</order>
-                <description expression="true">"Run '%s' on %s" % (deployed.name, deployed.container.name)</description>
-                <classpath-resources>
-                    <value>smoketest/runtime/wget.exe</value>
-                    <value>smoketest/postdata.dat.ftl</value>
-                </classpath-resources>
-                <shell>/bin/sh</shell>
-            </os-script>
-        </steps>
-    </rule>
+  <rule name="smoketest.RunHttpRequest" scope="deployed">
+    <conditions>
+      <type>smoketest.ExecutedHttpRequestTest</type>
+      <operation>CREATE</operation>
+      <operation>MODIFY</operation>
+      <operation>NOOP</operation>
+      <expression>not deployed.container.powershellInstalled</expression>
+    </conditions>
+    <steps>
+      <os-script>
+        <script>smoketest/execute-http-request</script>
+        <order expression="true">deployed.order</order>
+        <description expression="true">"Run '%s' on %s" % (deployed.name, deployed.container.name)</description>
+        <classpath-resources>
+          <value>smoketest/runtime/wget.exe</value>
+        </classpath-resources>
+        <shell>/bin/sh</shell>
+      </os-script>
+    </steps>
+  </rule>
+  <rule name="smoketest.RunPostHttpRequest" scope="deployed">
+    <conditions>
+      <type>smoketest.ExecutedHttpPostRequestTest</type>
+      <operation>CREATE</operation>
+      <operation>MODIFY</operation>
+      <operation>NOOP</operation>
+      <expression>not deployed.container.powershellInstalled</expression>
+    </conditions>
+    <steps>
+      <os-script>
+        <script>smoketest/execute-http-request</script>
+        <order expression="true">deployed.order</order>
+        <description expression="true">"Run '%s' on %s" % (deployed.name, deployed.container.name)</description>
+        <classpath-resources>
+          <value>smoketest/runtime/wget.exe</value>
+          <value>smoketest/postdata.dat.ftl</value>
+        </classpath-resources>
+        <shell>/bin/sh</shell>
+      </os-script>
+    </steps>
+  </rule>
 
-    <rule name="smoketest.RunPostHttpRequestFile" scope="deployed">
-        <conditions>
-            <type>smoketest.ExecutedHttpPostRequestFileTest</type>
-            <operation>CREATE</operation>
-            <operation>MODIFY</operation>
-            <operation>NOOP</operation>
-            <expression>not deployed.container.powershellInstalled</expression>
-        </conditions>
-        <steps>
-            <os-script>
-                <script>smoketest/execute-http-request</script>
-                <order expression="true">deployed.order</order>
-                <description expression="true">"Run '%s' on %s" % (deployed.name, deployed.container.name)</description>
-                <classpath-resources>
-                    <value>smoketest/runtime/wget.exe</value>
-                </classpath-resources>
-                <shell>/bin/sh</shell>
-            </os-script>
-        </steps>
-    </rule>
+  <rule name="smoketest.RunPostHttpRequestFile" scope="deployed">
+    <conditions>
+      <type>smoketest.ExecutedHttpPostRequestFileTest</type>
+      <operation>CREATE</operation>
+      <operation>MODIFY</operation>
+      <operation>NOOP</operation>
+      <expression>not deployed.container.powershellInstalled</expression>
+    </conditions>
+    <steps>
+      <os-script>
+        <script>smoketest/execute-http-request</script>
+        <order expression="true">deployed.order</order>
+        <description expression="true">"Run '%s' on %s" % (deployed.name, deployed.container.name)</description>
+        <classpath-resources>
+          <value>smoketest/runtime/wget.exe</value>
+        </classpath-resources>
+        <shell>/bin/sh</shell>
+      </os-script>
+    </steps>
+  </rule>
 
-    <rule name="smoketest.RunHttpRequest.powershell" scope="deployed">
-        <conditions>
-            <type>smoketest.ExecutedHttpRequestTest</type>
-            <operation>CREATE</operation>
-            <operation>MODIFY</operation>
-            <operation>NOOP</operation>
-            <expression>deployed.container.powershellInstalled and deployed.container.host.os == "WINDOWS"</expression>
-        </conditions>
-        <steps>
-            <powershell>
-                <script>smoketest/execute-http-request.ps1</script>
-                <order expression="true">deployed.order</order>
-                <description expression="true">"Run %s on %s (PowerShell)" % (deployed.name, deployed.container.name)</description>
-                <target-host expression="true">deployed.container.host</target-host>
-                <powershell-context>
-                    <method>GET</method>
-                </powershell-context>
-            </powershell>
-        </steps>
-    </rule>
+  <rule name="smoketest.RunHttpRequest.powershell" scope="deployed">
+    <conditions>
+      <type>smoketest.ExecutedHttpRequestTest</type>
+      <operation>CREATE</operation>
+      <operation>MODIFY</operation>
+      <operation>NOOP</operation>
+      <expression>deployed.container.powershellInstalled and deployed.container.host.os == "WINDOWS"</expression>
+    </conditions>
+    <steps>
+      <powershell>
+        <script>smoketest/execute-http-request.ps1</script>
+        <order expression="true">deployed.order</order>
+        <description expression="true">"Run %s on %s (PowerShell)" % (deployed.name, deployed.container.name)</description>
+        <target-host expression="true">deployed.container.host</target-host>
+        <powershell-context>
+          <method>GET</method>
+        </powershell-context>
+      </powershell>
+    </steps>
+  </rule>
 
-    <rule name="smoketest.RunPostHttpRequest.powershell" scope="deployed">
-        <conditions>
-            <type>smoketest.ExecutedHttpPostRequestTest</type>
-            <type>smoketest.ExecutedHttpPostRequestFileTest</type>
-            <operation>CREATE</operation>
-            <operation>MODIFY</operation>
-            <operation>NOOP</operation>
-            <expression>deployed.container.powershellInstalled and deployed.container.host.os == "WINDOWS"</expression>
-        </conditions>
-        <steps>
-            <powershell>
-                <script>smoketest/execute-http-request.ps1</script>
-                <order expression="true">deployed.order</order>
-                <description expression="true">"Run %s on %s (POST PowerShell)" % (deployed.name, deployed.container.name)</description>
-                <target-host expression="true">deployed.container.host</target-host>
-                <powershell-context>
-                    <method>POST</method>
-                </powershell-context>
-            </powershell>
-        </steps>
-    </rule>
+  <rule name="smoketest.RunPostHttpRequest.powershell" scope="deployed">
+    <conditions>
+      <type>smoketest.ExecutedHttpPostRequestTest</type>
+      <type>smoketest.ExecutedHttpPostRequestFileTest</type>
+      <operation>CREATE</operation>
+      <operation>MODIFY</operation>
+      <operation>NOOP</operation>
+      <expression>deployed.container.powershellInstalled and deployed.container.host.os == "WINDOWS"</expression>
+    </conditions>
+    <steps>
+      <powershell>
+        <script>smoketest/execute-http-request.ps1</script>
+        <order expression="true">deployed.order</order>
+        <description expression="true">"Run %s on %s (POST PowerShell)" % (deployed.name, deployed.container.name)</description>
+        <target-host expression="true">deployed.container.host</target-host>
+        <powershell-context>
+          <method>POST</method>
+        </powershell-context>
+      </powershell>
+    </steps>
+  </rule>
+
+  <rule name="smoketest.ExecutedManualTest" scope="deployed">
+    <conditions>
+      <type>smoketest.ExecutedManualTest</type>
+      <operation>CREATE</operation>
+      <operation>MODIFY</operation>
+      <operation>NOOP</operation>
+    </conditions>
+    <steps>
+      <manual>
+        <order expression="true">deployed.order</order>
+        <description expression="true">"Run '%s' on %s (manual)" % (deployed.name, deployed.container.name)</description>
+      </manual>
+    </steps>
+  </rule>
+
 </rules>

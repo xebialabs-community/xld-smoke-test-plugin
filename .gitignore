@@ -6,3 +6,4 @@ gradle/dependencies.conf
 *.iws
 .idea
 supervisord.*
+xl-deploy-9.5.1-server/

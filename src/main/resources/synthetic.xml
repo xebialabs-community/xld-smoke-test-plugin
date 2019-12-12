@@ -1,99 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright 2019 XEBIALABS
+Copyright 2019 XEBIALABS
 
-    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 -->
 <synthetic xmlns="http://www.xebialabs.com/deployit/synthetic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd">
+  xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd">
 
-    <type type="smoketest.Runner" extends="udm.BaseContainer">
-        <property name="host" kind="ci" referenced-type="overthere.Host" as-containment="true"/>
-        <property name="powershellInstalled" kind="boolean" default="false" required="false" hidden="false"
-                  description="Enable to indicate Powershell (V3+) installed on the host associated to the Runner"/>
-        <property name="wgetExecutable" hidden="true" default="smoketest\runtime\wget.exe" category="tests"/>
-    </type>
+  <type type="smoketest.Runner" extends="udm.BaseContainer">
+    <property name="host" kind="ci" referenced-type="overthere.Host" as-containment="true"/>
+    <property name="powershellInstalled" kind="boolean" default="false" required="false" hidden="false"
+      description="Enable to indicate Powershell (V3+) installed on the host associated to the Runner"/>
+    <property name="wgetExecutable" hidden="true" default="smoketest\runtime\wget.exe" category="tests"/>
+  </type>
 
-    <type type="smoketest.ExecutedHttpRequestTest" extends="udm.BaseDeployed"
-          container-type="smoketest.Runner" deployable-type="smoketest.HttpRequestTest">
+  <type type="smoketest.ExecutedHttpRequestTest" extends="udm.BaseDeployed"
+    container-type="smoketest.Runner" deployable-type="smoketest.HttpRequestTest">
 
-        <generate-deployable type="smoketest.HttpRequestTest" extends="udm.BaseDeployable"/>
+    <generate-deployable type="smoketest.HttpRequestTest" extends="udm.BaseDeployable"/>
 
-        <property name="url" description="The URL to test"/>
-        <property name="expectedResponseText" required="false" size="large"
-                  description="Text that is expected to be contained in the HTTP response body, if the response code is in the 200 range. A non-2xx response code will cause the test to fail irrespective of the response body"/>
-        <property name="unexpectedResponseText" required="false" size="large"
-                  description="Text that should not be contained in the HTTP response body, if the response code is in the 200 range. A non-2xx response code will cause the test to fail irrespective of the response body"/>
+    <property name="url" description="The URL to test"/>
+    <property name="expectedResponseText" required="false" size="large"
+      description="Text that is expected to be contained in the HTTP response body, if the response code is in the 200 range. A non-2xx response code will cause the test to fail irrespective of the response body"/>
+    <property name="unexpectedResponseText" required="false" size="large"
+      description="Text that should not be contained in the HTTP response body, if the response code is in the 200 range. A non-2xx response code will cause the test to fail irrespective of the response body"/>
 
-        <property name="showPageInConsole" required="false" kind="boolean" default="false" category="Options"
-                  description="Show the page retrieved from the url"/>
-        <property name="headers" kind="set_of_string" required="false" category="Request Headers"/>
-        <property name="ignoreCertificateWarnings" required="false" default="true" kind="boolean" category="Options"
-                  description="If set, certificate warnings when making a connection will be ignored"/>
-        <property name="startDelay" kind="integer" default="2" category="Options" description="Time in seconds to wait before starting the execution of step"/>
-        <property name="maxRetries" kind="integer" default="5" category="Options"
-                  description="Number of times to attempt executing the step, in case it fails"/>
-        <property name="retryWaitInterval" kind="integer" default="5" category="Options" description="Time in seconds to wait before next retry"/>
-        <property name="timeout" kind="integer" default="30" category="Options" description="Timeout in seconds for a query on the specified url"/>
-        <property name="order" kind="integer" default="102" category="Options" description="The order of the test step in the step list"/>
-    </type>
+    <property name="showPageInConsole" required="false" kind="boolean" default="false" category="Options"
+      description="Show the page retrieved from the url"/>
+    <property name="headers" kind="set_of_string" required="false" category="Request Headers"/>
+    <property name="ignoreCertificateWarnings" required="false" default="true" kind="boolean" category="Options"
+      description="If set, certificate warnings when making a connection will be ignored"/>
+    <property name="startDelay" kind="integer" default="2" category="Options" description="Time in seconds to wait before starting the execution of step"/>
+    <property name="maxRetries" kind="integer" default="5" category="Options"
+      description="Number of times to attempt executing the step, in case it fails"/>
+    <property name="retryWaitInterval" kind="integer" default="5" category="Options" description="Time in seconds to wait before next retry"/>
+    <property name="timeout" kind="integer" default="30" category="Options" description="Timeout in seconds for a query on the specified url"/>
+    <property name="order" kind="integer" default="102" category="Options" description="The order of the test step in the step list"/>
+  </type>
 
 
-    <type type="smoketest.ExecutedHttpPostRequestTest" extends="udm.BaseDeployed"
-          container-type="smoketest.Runner" deployable-type="smoketest.HttpPostRequestTest">
+  <type type="smoketest.ExecutedHttpPostRequestTest" extends="udm.BaseDeployed"
+    container-type="smoketest.Runner" deployable-type="smoketest.HttpPostRequestTest">
 
-        <generate-deployable type="smoketest.HttpPostRequestTest" extends="udm.BaseDeployable"/>
+    <generate-deployable type="smoketest.HttpPostRequestTest" extends="udm.BaseDeployable"/>
 
-        <property name="url" description="The URL to test"/>
-        <property name="postData" size="large" description="Use POST as the method for all HTTP requests and send the specified data in the request body."/>
-        <property name="contentType" default="text/xml" description="Content mime type"/>
-        <property name="expectedResponseText" size="large"
-                  description="Text that is expected to be contained in the HTTP response body, if the response code is in the 200 range. A non-2xx response code will cause the test to fail irrespective of the response body"/>
+    <property name="url" description="The URL to test"/>
+    <property name="postData" size="large" description="Use POST as the method for all HTTP requests and send the specified data in the request body."/>
+    <property name="contentType" default="text/xml" description="Content mime type"/>
+    <property name="expectedResponseText" size="large"
+      description="Text that is expected to be contained in the HTTP response body, if the response code is in the 200 range. A non-2xx response code will cause the test to fail irrespective of the response body"/>
 
-        <property name="showPageInConsole" required="false" kind="boolean" default="false" category="Options"
-                  description="Show the page retrieved from the url"/>
-        <property name="headers" kind="set_of_string" required="false" category="Request Headers"/>
-        <property name="ignoreCertificateWarnings" required="false" default="true" kind="boolean" category="Options"
-                  description="If set, certificate warnings when making a connection will be ignored"/>
-        <property name="startDelay" kind="integer" default="2" category="Options" description="Time in seconds to wait before starting the execution of step"/>
-        <property name="maxRetries" kind="integer" default="5" category="Options"
-                  description="Number of times to attempt executing the step, in case it fails"/>
-        <property name="retryWaitInterval" kind="integer" default="5" category="Options" description="Time in seconds to wait before next retry"/>
-        <property name="timeout" kind="integer" default="30" category="Options" description="Timeout in seconds for a query on the specified url"/>
-        <property name="order" kind="integer" default="102" category="Options" description="The order of the test step in the step list"/>
-    </type>
+    <property name="showPageInConsole" required="false" kind="boolean" default="false" category="Options"
+      description="Show the page retrieved from the url"/>
+    <property name="headers" kind="set_of_string" required="false" category="Request Headers"/>
+    <property name="ignoreCertificateWarnings" required="false" default="true" kind="boolean" category="Options"
+      description="If set, certificate warnings when making a connection will be ignored"/>
+    <property name="startDelay" kind="integer" default="2" category="Options" description="Time in seconds to wait before starting the execution of step"/>
+    <property name="maxRetries" kind="integer" default="5" category="Options"
+      description="Number of times to attempt executing the step, in case it fails"/>
+    <property name="retryWaitInterval" kind="integer" default="5" category="Options" description="Time in seconds to wait before next retry"/>
+    <property name="timeout" kind="integer" default="30" category="Options" description="Timeout in seconds for a query on the specified url"/>
+    <property name="order" kind="integer" default="102" category="Options" description="The order of the test step in the step list"/>
+  </type>
 
-    <type type="smoketest.ExecutedHttpPostRequestFileTest" extends="udm.BaseDeployedArtifact"
-          container-type="smoketest.Runner" deployable-type="smoketest.HttpPostRequestFileTest">
+  <type type="smoketest.ExecutedHttpPostRequestFileTest" extends="udm.BaseDeployedArtifact"
+    container-type="smoketest.Runner" deployable-type="smoketest.HttpPostRequestFileTest">
 
-        <generate-deployable type="smoketest.HttpPostRequestFileTest" extends="udm.BaseDeployableFileArtifact"/>
+    <generate-deployable type="smoketest.HttpPostRequestFileTest" extends="udm.BaseDeployableFileArtifact"/>
 
-        <property name="url" description="The URL to test"/>
-        <property name="contentType" default="text/xml" description="Content mime type"/>
-        <property name="expectedResponseText" size="large"
-                  description="Text that is expected to be contained in the HTTP response body, if the response code is in the 200 range. A non-2xx response code will cause the test to fail irrespective of the response body"/>
+    <property name="url" description="The URL to test"/>
+    <property name="contentType" default="text/xml" description="Content mime type"/>
+    <property name="expectedResponseText" size="large"
+      description="Text that is expected to be contained in the HTTP response body, if the response code is in the 200 range. A non-2xx response code will cause the test to fail irrespective of the response body"/>
 
-        <property name="showPageInConsole" required="false" kind="boolean" default="false" category="Options"
-                  description="Show the page retrieved from the url"/>
-        <property name="headers" kind="set_of_string" required="false" category="Request Headers"/>
-        <property name="ignoreCertificateWarnings" required="false" default="true" kind="boolean" category="Options"
-                  description="If set, certificate warnings when making a connection will be ignored"/>
-        <property name="startDelay" kind="integer" default="2" category="Options" description="Time in seconds to wait before starting the execution of step"/>
-        <property name="maxRetries" kind="integer" default="5" category="Options"
-                  description="Number of times to attempt executing the step, in case it fails"/>
-        <property name="retryWaitInterval" kind="integer" default="5" category="Options" description="Time in seconds to wait before next retry"/>
-        <property name="timeout" kind="integer" default="30" category="Options" description="Timeout in seconds for a query on the specified url"/>
-        <property name="order" kind="integer" default="102" category="Options" description="The order of the test step in the step list"/>
-    </type>
+    <property name="showPageInConsole" required="false" kind="boolean" default="false" category="Options"
+      description="Show the page retrieved from the url"/>
+    <property name="headers" kind="set_of_string" required="false" category="Request Headers"/>
+    <property name="ignoreCertificateWarnings" required="false" default="true" kind="boolean" category="Options"
+      description="If set, certificate warnings when making a connection will be ignored"/>
+    <property name="startDelay" kind="integer" default="2" category="Options" description="Time in seconds to wait before starting the execution of step"/>
+    <property name="maxRetries" kind="integer" default="5" category="Options"
+      description="Number of times to attempt executing the step, in case it fails"/>
+    <property name="retryWaitInterval" kind="integer" default="5" category="Options" description="Time in seconds to wait before next retry"/>
+    <property name="timeout" kind="integer" default="30" category="Options" description="Timeout in seconds for a query on the specified url"/>
+    <property name="order" kind="integer" default="102" category="Options" description="The order of the test step in the step list"/>
+  </type>
 
-    <type-modification type="smoketest.HttpPostRequestFileTest">
-        <property name="textFileNamesRegex" hidden="true" default=".+\.(cfg | conf | config | ini | properties | props | txt | json | htm | html | xml )"/>
-    </type-modification>
+  <type-modification type="smoketest.HttpPostRequestFileTest">
+    <property name="textFileNamesRegex" hidden="true" default=".+\.(cfg | conf | config | ini | properties | props | txt | json | htm | html | xml )"/>
+  </type-modification>
+
+  <type type="smoketest.ExecutedManualTest" extends="udm.BaseDeployed"
+    container-type="smoketest.Runner" deployable-type="smoketest.ManualTest">
+    <generate-deployable type="smoketest.ManualTest" extends="udm.BaseDeployable"/>
+    <property name="url" description="The URL to test"/>
+    <property name="expectedResponseText" required="false" size="large"
+      description="Text that is expected to be contained in the HTTP response body, if the response code is in the 200 range. A non-2xx response code will cause the test to fail irrespective of the response body"/>
+    <property name="order" kind="integer" default="102" category="Options" description="The order of the test step in the step list"/>
+  </type>
 
 </synthetic>
