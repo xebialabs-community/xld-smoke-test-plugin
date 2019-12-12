@@ -68,3 +68,32 @@ to
 
 
 ![XLD Smoke Test plugin in action](images/xld-smoke-test-inaction.png)
+
+
+# Sample App
+
+```
+xl apply --xl-deploy-url http://localhost:4540 -f xebialabs.yaml
+
+[1/4] Applying infrastructure.yaml (imported by xebialabs.yaml)
+    Created CI Infrastructure/xld-smoke-test/localhost/test runner
+    Created CI Infrastructure/xld-smoke-test/localhost
+    Created CI Infrastructure/xld-smoke-test
+
+[2/4] Applying environments.yaml (imported by xebialabs.yaml)
+    Created CI Environments/xld-smoke-test/dev
+    Created CI Environments/xld-smoke-test/dev.conf
+    Created CI Environments/xld-smoke-test
+
+[3/4] Applying applications.yaml (imported by xebialabs.yaml)
+    Created CI Applications/xld-smoke-test/postcodes.io/1.0/manual test
+    Created CI Applications/xld-smoke-test/postcodes.io/1.0/get
+    Created CI Applications/xld-smoke-test/postcodes.io/1.0/post file
+    Created CI Applications/xld-smoke-test/postcodes.io/1.0/post
+    Created CI Applications/xld-smoke-test/postcodes.io/1.0
+    Created CI Applications/xld-smoke-test/postcodes.io
+    Created CI Applications/xld-smoke-test
+
+[4/4] Applying xebialabs.yaml
+Done
+``

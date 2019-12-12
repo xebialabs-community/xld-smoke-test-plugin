@@ -1,0 +1,37 @@
+---
+apiVersion: xl-deploy/v1
+kind: Applications
+spec:
+- directory: Applications/xld-smoke-test
+  children:
+  - name: postcodes.io
+    type: udm.Application
+    lastVersion: "1.0"
+    children:
+    - name: "1.0"
+      type: udm.DeploymentPackage
+      deployables:
+      - name: manual test
+        type: smoketest.ManualTest
+        url: https://api.postcodes.io/
+        expectedResponseText: Check
+        order: "105"
+      - name: get
+        type: smoketest.HttpRequestTest
+        url: https://api.postcodes.io/postcodes/EC3M1AE
+        expectedResponseText: London
+        pauseAfterTest: True
+      - name: post file
+        type: smoketest.HttpPostRequestFileTest
+        placeholders:
+        - ZIPCODE
+        url: https://api.postcodes.io/postcodes
+        contentType: application/json
+        expectedResponseText: England
+        file: !file "artifacts/Applications/xld-smoke-test/postcodes.io/1.0/post file/test-file.json"
+      - name: post
+        type: smoketest.HttpPostRequestTest
+        url: https://api.postcodes.io/postcodes
+        postData: '{"postcodes" : ["OX49 5NU", "M32 0JG", "NE30 1DP"] }'
+        contentType: application/json
+        expectedResponseText: England

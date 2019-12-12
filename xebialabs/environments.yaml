@@ -1,0 +1,16 @@
+---
+apiVersion: xl-deploy/v1
+kind: Environments
+spec:
+- directory: Environments/xld-smoke-test
+  children:
+  - name: dev
+    type: udm.Environment
+    members:
+    - Infrastructure/xld-smoke-test/localhost/test runner
+    dictionaries:
+    - Environments/xld-smoke-test/dev.conf
+  - name: dev.conf
+    type: udm.Dictionary
+    entries:
+      ZIPCODE: OX49 5NU
