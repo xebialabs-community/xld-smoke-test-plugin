@@ -26,7 +26,7 @@ export ${envVar}
 <#if (deployed.postData??)>
     <#assign wgetCmdLine = wgetCmdLine + ["--post-file=smoketest/postdata.dat", "--header=\"Content-Type: ${deployed.contentType}\""]/>
 <#elseif (deployed.file??)>
-    <#assign wgetCmdLine = wgetCmdLine + ["--post-file=${deployed.file.name}", "--header=\"Content-Type: ${deployed.contentType}\""]/>
+    <#assign wgetCmdLine = wgetCmdLine + ["--post-file=${deployed.file.path}", "--header=\"Content-Type: ${deployed.contentType}\""]/>
 </#if>
 <#list deployed.headers as header>
     <#assign wgetCmdLine = wgetCmdLine + ["--header=\"${header}\""]/>
