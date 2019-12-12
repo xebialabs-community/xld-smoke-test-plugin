@@ -42,6 +42,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <property name="retryWaitInterval" kind="integer" default="5" category="Options" description="Time in seconds to wait before next retry"/>
     <property name="timeout" kind="integer" default="30" category="Options" description="Timeout in seconds for a query on the specified url"/>
     <property name="order" kind="integer" default="102" category="Options" description="The order of the test step in the step list"/>
+    <property name="pauseAfterTest" kind="boolean" default="false" required="false" category="Options" description="Generate a pause step just after the test (order+1)"/>
   </type>
 
 
@@ -67,6 +68,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <property name="retryWaitInterval" kind="integer" default="5" category="Options" description="Time in seconds to wait before next retry"/>
     <property name="timeout" kind="integer" default="30" category="Options" description="Timeout in seconds for a query on the specified url"/>
     <property name="order" kind="integer" default="102" category="Options" description="The order of the test step in the step list"/>
+    <property name="pauseAfterTest" kind="boolean" default="false" required="false" category="Options" description="Generate a pause step just after the test (order+1)"/>
   </type>
 
   <type type="smoketest.ExecutedHttpPostRequestFileTest" extends="udm.BaseDeployedArtifact"
@@ -90,6 +92,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <property name="retryWaitInterval" kind="integer" default="5" category="Options" description="Time in seconds to wait before next retry"/>
     <property name="timeout" kind="integer" default="30" category="Options" description="Timeout in seconds for a query on the specified url"/>
     <property name="order" kind="integer" default="102" category="Options" description="The order of the test step in the step list"/>
+    <property name="pauseAfterTest" kind="boolean" default="false" required="false" category="Options" description="Generate a pause step just after the test (order+1)"/>
   </type>
 
   <type-modification type="smoketest.HttpPostRequestFileTest">

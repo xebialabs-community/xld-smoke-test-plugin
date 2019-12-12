@@ -132,4 +132,23 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     </steps>
   </rule>
 
+   <rule name="smoketest.PauseAfterTest" scope="deployed">
+    <conditions>
+      <type>smoketest.ExecutedHttpRequestTest</type>
+      <type>smoketest.ExecutedHttpPostRequestTest</type>
+      <type>smoketest.ExecutedHttpPostRequestFileTest</type>
+      <operation>CREATE</operation>
+      <operation>MODIFY</operation>
+      <operation>NOOP</operation>
+      <expression>deployed.pauseAfterTest</expression>
+    </conditions>
+    <steps>
+      <manual>
+        <order expression="true">deployed.order +1 </order>
+        <description expression="true">"Pause"</description>
+      </manual>
+    </steps>
+  </rule>
+
+
 </rules>
