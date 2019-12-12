@@ -17,7 +17,7 @@
       <operation>CREATE</operation>
       <operation>MODIFY</operation>
       <operation>NOOP</operation>
-      <expression>not deployed.container.powershellInstalled</expression>
+      <expression>(not deployed.container.powershellInstalled and deployed.container.host.os == "WINDOWS") or ( deployed.container.host.os == "UNIX")</expression>
     </conditions>
     <steps>
       <os-script>
@@ -37,7 +37,7 @@
       <operation>CREATE</operation>
       <operation>MODIFY</operation>
       <operation>NOOP</operation>
-      <expression>not deployed.container.powershellInstalled</expression>
+      <expression>(not deployed.container.powershellInstalled and deployed.container.host.os == "WINDOWS") or ( deployed.container.host.os == "UNIX")</expression>
     </conditions>
     <steps>
       <os-script>
@@ -59,7 +59,7 @@
       <operation>CREATE</operation>
       <operation>MODIFY</operation>
       <operation>NOOP</operation>
-      <expression>not deployed.container.powershellInstalled</expression>
+      <expression>(not deployed.container.powershellInstalled and deployed.container.host.os == "WINDOWS") or ( deployed.container.host.os == "UNIX")</expression>
     </conditions>
     <steps>
       <os-script>
